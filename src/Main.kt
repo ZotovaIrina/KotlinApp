@@ -30,6 +30,21 @@ fun main(args: Array<String>) {
     div.appendChild(h1);
     div.appendChild(button);
     div.appendChild(span);
+
+    //Display customer messages
+    val customerContainer = document.createElement("div")
+    div.appendChild(customerContainer)
+    val customer = Customer("Irina", "irina@gmail.com", listOf("message 1", "message 2", "message 3"))
+    val userName = document.createElement("span")
+    userName.textContent = customer.name
+    customerContainer.appendChild(userName)
+
+    for (customerMessage in customer.messages) {
+        val string = document.createElement("span")
+        string.textContent = customerMessage
+        customerContainer.appendChild(string)
+    }
+
     // !! means if root is null don't do this
     root!!.appendChild(div);
 }
