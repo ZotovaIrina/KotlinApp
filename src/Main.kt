@@ -1,7 +1,5 @@
 import kotlin.browser.document
 
-import sum
-
 fun main(args: Array<String>) {
     val message = "Sum calculation ";
     val root = document.getElementById("root");
@@ -10,10 +8,23 @@ fun main(args: Array<String>) {
     val h1 = document.createElement("h1");
     val span = document.createElement("span");
 
+    var a = 1
+    var b = 2
+    var buttonIsClicked = false
+
     h1.textContent = message
     button.textContent = "Sum";
     button.addEventListener("click", {
-        span.textContent = "Sum is " + sum(1, 2)
+        val text = "Sum is " + sum(a, b)
+        if (buttonIsClicked) {
+            a +=1
+            b +=1
+            span.textContent = "${text.replace("is", "was")}, but now is " + sum(a, b)
+        } else {
+            span.textContent = text
+        }
+        buttonIsClicked = true
+
     })
 
     div.appendChild(h1);
